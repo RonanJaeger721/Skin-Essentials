@@ -53,8 +53,11 @@
 
     <main>
       <section class="hero-slider" aria-label="Featured Skin Essentials offers">
+        <div class="hero-timer" aria-hidden="true">
+          <span id="heroTimerFill"></span>
+        </div>
         <article class="hero-slide active" data-slide="0">
-          <img src="assets/hero-clear-glow.jpg" alt="Clear premium glow skincare product display" />
+          <img src="assets/hero-sharp-glow.jpg" alt="Sharp premium glow skincare product display" />
           <div class="hero-content">
             <span>Special offer</span>
             <h1>Glow rituals, curated beautifully.</h1>
@@ -63,26 +66,29 @@
           </div>
         </article>
         <article class="hero-slide" data-slide="1">
-          <img src="assets/hero-clear-pore.jpg" alt="Clear pore reset skincare product display" />
+          <img src="assets/hero-sharp-pore.jpg" alt="Sharp pore reset skincare product display" />
           <div class="hero-content">
-            <span>Skin match</span>
-            <h1>Build a routine that feels expensive.</h1>
-            <p>Pick a goal and the shop reshuffles cleansers, toners, serums, and creams.</p>
+            <span>Pore reset</span>
+            <h1>Texture care with a clean finish.</h1>
+            <p>Shop pore pads, cleansing foams, SPF, and brightening serums in one polished edit.</p>
+            <a class="button primary" href="#categories">Shop categories</a>
+          </div>
+        </article>
+        <article class="hero-slide" data-slide="2">
+          <img src="assets/hero-sharp-repair.jpg" alt="Sharp repair skincare product display" />
+          <div class="hero-content">
+            <span>Barrier shelf</span>
+            <h1>Soft repair, sealed in style.</h1>
+            <p>Comforting toners, creams, and masks for calm skin that still looks expensive.</p>
             <a class="button primary" href="#lifestyle">Choose your goal</a>
           </div>
         </article>
-        <div class="hero-loading" aria-hidden="true">
-          <span>Loading next edit</span>
-          <div class="loading-dots"><i></i><i></i><i></i></div>
-        </div>
         <div class="slider-controls" aria-label="Hero slider controls">
           <button type="button" data-hero-prev aria-label="Previous hero slide">&lsaquo;</button>
           <span class="slide-dot active"></span>
           <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
           <button type="button" data-hero-next aria-label="Next hero slide">&rsaquo;</button>
-        </div>
-        <div class="hero-timer" aria-hidden="true">
-          <span id="heroTimerFill"></span>
         </div>
       </section>
 

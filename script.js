@@ -300,8 +300,7 @@ let offerIndex = 0;
 let cart = {};
 let revealObserver;
 let heroTimer;
-const heroDisplayMs = 5600;
-const heroLoadingMs = 850;
+const heroDisplayMs = 6400;
 
 const grid = document.querySelector("#productGrid");
 const bestTrack = document.querySelector("#bestTrack");
@@ -565,7 +564,6 @@ function setHero(index) {
 
 function startHeroTimer() {
   window.clearTimeout(heroTimer);
-  heroSlider.classList.remove("loading");
   heroTimerFill.style.transitionDuration = "0ms";
   heroTimerFill.style.width = "0%";
 
@@ -577,19 +575,13 @@ function startHeroTimer() {
   });
 
   heroTimer = window.setTimeout(() => {
-    heroSlider.classList.add("loading");
-    heroTimerFill.style.transitionDuration = "180ms";
-    heroTimerFill.style.width = "0%";
-    heroTimer = window.setTimeout(() => {
-      setHero(heroIndex + 1);
-      startHeroTimer();
-    }, heroLoadingMs);
+    setHero(heroIndex + 1);
+    startHeroTimer();
   }, heroDisplayMs);
 }
 
 function moveHero(direction) {
   window.clearTimeout(heroTimer);
-  heroSlider.classList.add("loading");
   heroTimerFill.style.transitionDuration = "160ms";
   heroTimerFill.style.width = "0%";
   window.setTimeout(() => {
