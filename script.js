@@ -299,6 +299,9 @@ let heroIndex = 0;
 let offerIndex = 0;
 let cart = {};
 let revealObserver;
+let heroTimer;
+const heroDisplayMs = 5600;
+const heroLoadingMs = 850;
 
 const grid = document.querySelector("#productGrid");
 const bestTrack = document.querySelector("#bestTrack");
@@ -314,6 +317,8 @@ const toast = document.querySelector(".toast");
 const whatsAppOrder = document.querySelector(".cart-whatsapp");
 const quickView = document.querySelector(".quick-view");
 const quickContent = document.querySelector("#quickContent");
+const heroSlider = document.querySelector(".hero-slider");
+const heroTimerFill = document.querySelector("#heroTimerFill");
 
 function money(value) {
   return `US$${value.toFixed(0)}`;
@@ -558,6 +563,41 @@ function setHero(index) {
   dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === heroIndex));
 }
 
+function startHeroTimer() {
+  window.clearTimeout(heroTimer);
+  heroSlider.classList.remove("loading");
+  heroTimerFill.style.transitionDuration = "0ms";
+  heroTimerFill.style.width = "0%";
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      heroTimerFill.style.transitionDuration = `${heroDisplayMs}ms`;
+      heroTimerFill.style.width = "100%";
+    });
+  });
+
+  heroTimer = window.setTimeout(() => {
+    heroSlider.classList.add("loading");
+    heroTimerFill.style.transitionDuration = "180ms";
+    heroTimerFill.style.width = "0%";
+    heroTimer = window.setTimeout(() => {
+      setHero(heroIndex + 1);
+      startHeroTimer();
+    }, heroLoadingMs);
+  }, heroDisplayMs);
+}
+
+function moveHero(direction) {
+  window.clearTimeout(heroTimer);
+  heroSlider.classList.add("loading");
+  heroTimerFill.style.transitionDuration = "160ms";
+  heroTimerFill.style.width = "0%";
+  window.setTimeout(() => {
+    setHero(heroIndex + direction);
+    startHeroTimer();
+  }, 320);
+}
+
 function setOffer(index) {
   offerIndex = (index + offers.length) % offers.length;
   document.querySelector("#offerText").textContent = offers[offerIndex];
@@ -609,8 +649,8 @@ searchInput.addEventListener("keydown", (event) => {
 document.querySelector(".cart-button").addEventListener("click", openCart);
 document.querySelector(".close-cart").addEventListener("click", closeCart);
 document.querySelector(".close-quick").addEventListener("click", closeQuickView);
-document.querySelector("[data-hero-prev]").addEventListener("click", () => setHero(heroIndex - 1));
-document.querySelector("[data-hero-next]").addEventListener("click", () => setHero(heroIndex + 1));
+document.querySelector("[data-hero-prev]").addEventListener("click", () => moveHero(-1));
+document.querySelector("[data-hero-next]").addEventListener("click", () => moveHero(1));
 document.querySelector("[data-slide-prev]").addEventListener("click", () => setOffer(offerIndex - 1));
 document.querySelector("[data-slide-next]").addEventListener("click", () => setOffer(offerIndex + 1));
 document.querySelector("[data-rail-left]").addEventListener("click", () => {
@@ -641,7 +681,6 @@ window.addEventListener("load", () => {
   window.setTimeout(revealVisibleCards, 300);
 });
 
-window.setInterval(() => setHero(heroIndex + 1), 6500);
 window.setInterval(() => setOffer(offerIndex + 1), 5200);
 
 renderCategories();
@@ -649,3 +688,4 @@ renderGoals();
 renderBest();
 renderProducts();
 updateCart();
+startHeroTimer();
