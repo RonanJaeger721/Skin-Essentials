@@ -261,37 +261,42 @@ const products = [
   },
 ];
 
+products.unshift(...(window.clientProducts || []));
+
 const offers = [
-  "Save 15% on glow bundles this week",
+  "New client stock drop is live",
   "Harare pickup on Nelson Mandela Avenue",
   "WhatsApp +263 77 704 1074 for skin matching",
 ];
 
 const categories = [
+  { label: "New drop", icon: "N", filter: "new" },
+  { label: "Medicube", icon: "Me", filter: "medicube" },
   { label: "Cleansers", icon: "C", filter: "pore" },
   { label: "Toners", icon: "T", filter: "hydrate" },
   { label: "Serums", icon: "S", filter: "brighten" },
   { label: "Creams", icon: "Cr", filter: "repair" },
-  { label: "Masks", icon: "M", filter: "glow" },
-  { label: "Bundles", icon: "B", filter: "all" },
+  { label: "Body care", icon: "B", filter: "body" },
+  { label: "Fragrance", icon: "F", filter: "fragrance" },
 ];
 
 const goals = [
+  { label: "Fresh arrivals", icon: "N", filter: "new", note: "Client stock, grouped cleanly." },
   { label: "Glass glow", icon: "G", filter: "glow", note: "Dewy, polished, luminous." },
   { label: "Pore reset", icon: "P", filter: "pore", note: "Texture, oil, refinement." },
   { label: "Barrier calm", icon: "B", filter: "repair", note: "Soft, soothed, supported." },
-  { label: "Deep hydration", icon: "H", filter: "hydrate", note: "Bounce and comfort." },
   { label: "Even tone", icon: "E", filter: "brighten", note: "Dark spots and radiance." },
+  { label: "Body polish", icon: "S", filter: "body", note: "Oils, washes, mists." },
 ];
 
 const bestIds = [
-  "good-morning-gel-cleanser",
-  "heartleaf-77-toner",
-  "cosrx-mucin-power-essence",
-  "ordinary-niacinamide",
-  "zero-pore-combo",
-  "anua-peach-combo",
-  "medicube-triple-collagen",
+  "client-medicube-pdrn-pink-collagen-capsule-cream",
+  "client-medicube-kojic-acid-turmeric-edit",
+  "client-medicube-zero-pore-pad-edit",
+  "client-axis-y-dark-spot-correcting-edit",
+  "client-cerave-cleanser-edit",
+  "client-victorias-secret-mist-assortment",
+  "client-cosrx-snail-radiance-duo",
 ];
 
 let activeFilter = "all";
@@ -320,15 +325,22 @@ const heroSlider = document.querySelector(".hero-slider");
 const heroTimerFill = document.querySelector("#heroTimerFill");
 
 function money(value) {
-  return `US$${value.toFixed(0)}`;
+  return typeof value === "number" ? `US$${value.toFixed(0)}` : "Ask";
+}
+
+function productImages(product) {
+  return product.gallery?.length ? product.gallery : [product.image];
 }
 
 function productCard(product, compact = false) {
+  const images = productImages(product);
+  const hasGallery = images.length > 1;
   return `
     <article class="product-card reveal">
       <div class="product-media">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <img src="${images[0]}" alt="${product.name}" loading="lazy" />
         <span class="badge">${product.badge}</span>
+        ${hasGallery ? `<span class="gallery-pill">${images.length} images</span>` : ""}
       </div>
       <div class="product-body">
         <span class="product-brand">${product.brand}</span>
@@ -401,7 +413,7 @@ function renderProducts() {
   const query = searchInput.value.trim().toLowerCase();
   const visibleProducts = products.filter((product) => {
     const matchesFilter = activeFilter === "all" || product.categories.includes(activeFilter);
-    const matchesSearch = [product.name, product.brand, product.badge, product.desc]
+    const matchesSearch = [product.name, product.brand, product.badge, product.desc, product.source]
       .join(" ")
       .toLowerCase()
       .includes(query);
@@ -452,11 +464,15 @@ function updateCart() {
   const totalQuantity = entries.reduce((sum, [, quantity]) => sum + quantity, 0);
   const total = entries.reduce((sum, [id, quantity]) => {
     const product = products.find((item) => item.id === id);
-    return sum + product.price * quantity;
+    return sum + (typeof product.price === "number" ? product.price * quantity : 0);
   }, 0);
+  const hasQuoteItems = entries.some(([id]) => {
+    const product = products.find((item) => item.id === id);
+    return typeof product.price !== "number";
+  });
 
   cartCount.textContent = totalQuantity;
-  cartTotal.textContent = money(total);
+  cartTotal.textContent = hasQuoteItems ? (total > 0 ? `From ${money(total)}` : "Quote") : money(total);
 
   if (!entries.length) {
     cartItems.innerHTML = `<p class="cart-empty">Your cart is ready for a curated Skin Essentials edit. Add products and send the order straight to WhatsApp.</p>`;
@@ -469,7 +485,7 @@ function updateCart() {
             <img src="${product.image}" alt="" />
             <div>
               <strong>${product.name}</strong>
-              <span>${money(product.price)} each</span>
+              <span>${typeof product.price === "number" ? `${money(product.price)} each` : "Ask for price"}</span>
             </div>
             <div class="qty" aria-label="Quantity controls for ${product.name}">
               <button type="button" data-decrease="${product.id}" aria-label="Decrease ${product.name}">-</button>
@@ -502,9 +518,9 @@ function updateCart() {
     ? `Hello Skin Essentials, I would like to order:%0A${entries
         .map(([id, quantity]) => {
           const product = products.find((item) => item.id === id);
-          return `- ${quantity} x ${product.name} (${money(product.price)})`;
+          return `- ${quantity} x ${product.name} (${typeof product.price === "number" ? money(product.price) : "price check"})`;
         })
-        .join("%0A")}%0AEstimated total: ${money(total)}`
+        .join("%0A")}%0A${hasQuoteItems ? "Please confirm availability and prices." : `Estimated total: ${money(total)}`}`
     : "Hello Skin Essentials, I would like help choosing a skincare routine.";
   whatsAppOrder.href = `https://wa.me/263777041074?text=${message}`;
 }
@@ -523,19 +539,44 @@ function closeCart() {
 
 function openQuickView(id) {
   const product = products.find((item) => item.id === id);
+  const images = productImages(product);
   quickContent.innerHTML = `
     <div class="quick-content">
-      <img src="${product.image}" alt="${product.name}" />
+      <div class="quick-gallery">
+        <img id="quickMainImage" src="${images[0]}" alt="${product.name}" />
+        ${
+          images.length > 1
+            ? `<div class="quick-thumbs" aria-label="Product gallery">
+                ${images
+                  .map(
+                    (image, index) => `
+                      <button class="${index === 0 ? "active" : ""}" type="button" data-gallery-image="${image}" aria-label="Show image ${index + 1} for ${product.name}">
+                        <img src="${image}" alt="" />
+                      </button>
+                    `
+                  )
+                  .join("")}
+              </div>`
+            : ""
+        }
+      </div>
       <div>
         <span class="eyebrow">${product.brand}</span>
         <h2>${product.name}</h2>
-        <p>${product.desc} Available from Skin Essentials on Nelson Mandela Avenue, Harare.</p>
+        <p>${product.desc} ${product.source ? `${product.source}.` : ""} Available from Skin Essentials on Nelson Mandela Avenue, Harare.</p>
         <p class="price">${money(product.price)}</p>
         <button class="button primary" type="button" data-quick-add="${product.id}">Add to cart</button>
       </div>
     </div>
   `;
   quickContent.querySelector("[data-quick-add]").addEventListener("click", () => addToCart(id));
+  quickContent.querySelectorAll("[data-gallery-image]").forEach((button) => {
+    button.addEventListener("click", () => {
+      quickContent.querySelector("#quickMainImage").src = button.dataset.galleryImage;
+      quickContent.querySelectorAll(".quick-thumbs button").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
   document.body.classList.add("quick-open");
   quickView.classList.add("open");
   quickView.setAttribute("aria-hidden", "false");
