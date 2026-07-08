@@ -280,15 +280,6 @@ const categories = [
   { label: "Fragrance", icon: "F", filter: "fragrance" },
 ];
 
-const goals = [
-  { label: "Fresh arrivals", icon: "N", filter: "new", note: "Client stock, grouped cleanly." },
-  { label: "Glass glow", icon: "G", filter: "glow", note: "Dewy, polished, luminous." },
-  { label: "Pore reset", icon: "P", filter: "pore", note: "Texture, oil, refinement." },
-  { label: "Barrier calm", icon: "B", filter: "repair", note: "Soft, soothed, supported." },
-  { label: "Even tone", icon: "E", filter: "brighten", note: "Dark spots and radiance." },
-  { label: "Body polish", icon: "S", filter: "body", note: "Oils, washes, mists." },
-];
-
 const bestIds = [
   "client-medicube-pdrn-pink-collagen-capsule-cream",
   "client-medicube-kojic-acid-turmeric-edit",
@@ -312,7 +303,6 @@ const bestTrack = document.querySelector("#bestTrack");
 const searchInput = document.querySelector("#globalSearch");
 const filterButtons = document.querySelectorAll(".filter");
 const categoryGrid = document.querySelector("#categoryGrid");
-const goalGrid = document.querySelector("#goalGrid");
 const cartDrawer = document.querySelector(".cart-drawer");
 const cartItems = document.querySelector("#cartItems");
 const cartTotal = document.querySelector("#cartTotal");
@@ -374,29 +364,6 @@ function renderCategories() {
   categoryGrid.querySelectorAll("[data-category]").forEach((button) => {
     button.addEventListener("click", () => {
       setFilter(button.dataset.category);
-      document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
-    });
-  });
-}
-
-function renderGoals() {
-  goalGrid.innerHTML = goals
-    .map(
-      (goal) => `
-        <button class="goal-card" type="button" data-goal="${goal.filter}">
-          <span class="goal-icon">${goal.icon}</span>
-          <strong>${goal.label}</strong>
-          <span>${goal.note}</span>
-        </button>
-      `
-    )
-    .join("");
-
-  goalGrid.querySelectorAll("[data-goal]").forEach((button) => {
-    button.addEventListener("click", () => {
-      goalGrid.querySelectorAll(".goal-card").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      setFilter(button.dataset.goal);
       document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
     });
   });
@@ -717,7 +684,6 @@ window.addEventListener("load", () => {
 window.setInterval(() => setOffer(offerIndex + 1), 5200);
 
 renderCategories();
-renderGoals();
 renderBest();
 renderProducts();
 updateCart();
