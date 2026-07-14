@@ -377,6 +377,8 @@ function productCard(product, compact = false) {
 }
 
 function renderCategories() {
+  if (!categoryGrid) return;
+
   categoryGrid.innerHTML = categories
     .map(
       (category) => `
@@ -440,7 +442,7 @@ function setFilter(filter) {
   filterButtons.forEach((item) => {
     item.classList.toggle("active", item.dataset.filter === filter);
   });
-  categoryGrid.querySelectorAll(".category-card").forEach((item) => {
+  categoryGrid?.querySelectorAll(".category-card").forEach((item) => {
     item.classList.toggle("active", item.dataset.category === filter);
   });
   renderProducts();

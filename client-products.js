@@ -9,8 +9,9 @@ window.clientProducts = [
       "new",
       "body"
     ],
-    "image": "assets/client-products/beauty-formulas-feminine-wash-01.jpg",
+    "image": "assets/client-products/beauty-formulas-feminine-wash-clean.jpg",
     "gallery": [
+      "assets/client-products/beauty-formulas-feminine-wash-clean.jpg",
       "assets/client-products/beauty-formulas-feminine-wash-01.jpg"
     ],
     "desc": "Gentle intimate cleansing care for a polished body-care shelf.",
@@ -26,8 +27,10 @@ window.clientProducts = [
       "new",
       "hydrate"
     ],
-    "image": "assets/client-products/neutrogena-hydro-boost-gel-cream-01.jpg",
+    "image": "assets/client-products/neutrogena-hydro-boost-gel-cream-card-clean.jpg",
     "gallery": [
+      "assets/client-products/neutrogena-hydro-boost-gel-cream-card-clean.jpg",
+      "assets/client-products/neutrogena-hydro-boost-gel-cream-clean.jpg",
       "assets/client-products/neutrogena-hydro-boost-gel-cream-01.jpg"
     ],
     "desc": "Blue-water hydration for extra dry skin and a cushioned finish.",
@@ -60,8 +63,9 @@ window.clientProducts = [
       "new",
       "repair"
     ],
-    "image": "assets/client-products/cosrx-snail-radiance-duo-01.jpg",
+    "image": "assets/client-products/cosrx-snail-radiance-duo-clean.jpg",
     "gallery": [
+      "assets/client-products/cosrx-snail-radiance-duo-clean.jpg",
       "assets/client-products/cosrx-snail-radiance-duo-01.jpg",
       "assets/client-products/cosrx-snail-radiance-duo-02.jpg",
       "assets/client-products/cosrx-snail-radiance-duo-03.jpg"
@@ -80,8 +84,10 @@ window.clientProducts = [
       "brighten",
       "glow"
     ],
-    "image": "assets/client-products/palmers-tone-correction-essentials-01.jpg",
+    "image": "assets/client-products/palmers-tone-correction-essentials-card-clean.jpg",
     "gallery": [
+      "assets/client-products/palmers-tone-correction-essentials-card-clean.jpg",
+      "assets/client-products/palmers-tone-correction-essentials-clean.jpg",
       "assets/client-products/palmers-tone-correction-essentials-01.jpg"
     ],
     "desc": "Fade milk and cream essentials for a brighter body routine.",
@@ -97,8 +103,10 @@ window.clientProducts = [
       "new",
       "pore"
     ],
-    "image": "assets/client-products/panoxyl-acne-creamy-wash-01.jpg",
+    "image": "assets/client-products/panoxyl-acne-creamy-wash-card-clean.jpg",
     "gallery": [
+      "assets/client-products/panoxyl-acne-creamy-wash-card-clean.jpg",
+      "assets/client-products/panoxyl-acne-creamy-wash-clean.jpg",
       "assets/client-products/panoxyl-acne-creamy-wash-01.jpg"
     ],
     "desc": "Benzoyl peroxide wash support for breakout-prone routines.",
@@ -114,8 +122,9 @@ window.clientProducts = [
       "new",
       "hydrate"
     ],
-    "image": "assets/client-products/neutrogena-hydro-boost-spf-edit-01.jpg",
+    "image": "assets/client-products/neutrogena-hydro-boost-spf-clean.jpg",
     "gallery": [
+      "assets/client-products/neutrogena-hydro-boost-spf-clean.jpg",
       "assets/client-products/neutrogena-hydro-boost-spf-edit-01.jpg",
       "assets/client-products/neutrogena-hydro-boost-spf-edit-02.jpg"
     ],
@@ -132,11 +141,13 @@ window.clientProducts = [
       "new",
       "body"
     ],
-    "image": "assets/client-products/vaseline-cocoa-radiant-body-oil-01.jpg",
+    "image": "assets/client-products/vaseline-cocoa-radiant-body-oil-card-clean.jpg",
     "gallery": [
+      "assets/client-products/vaseline-cocoa-radiant-body-oil-card-clean.jpg",
+      "assets/client-products/vaseline-cocoa-radiant-body-oil-clean.jpg",
       "assets/client-products/vaseline-cocoa-radiant-body-oil-01.jpg"
     ],
-    "desc": "Glow body oil with visible stock pricing from the client batch.",
+    "desc": "Glow body oil grouped cleanly from the client stock batch.",
     "source": "Client stock drop"
   },
   {
@@ -149,8 +160,9 @@ window.clientProducts = [
       "new",
       "hydrate"
     ],
-    "image": "assets/client-products/garnier-hyaluronic-aloe-edit-01.jpg",
+    "image": "assets/client-products/garnier-hyaluronic-aloe-edit-clean.jpg",
     "gallery": [
+      "assets/client-products/garnier-hyaluronic-aloe-edit-clean.jpg",
       "assets/client-products/garnier-hyaluronic-aloe-edit-01.jpg",
       "assets/client-products/garnier-hyaluronic-aloe-edit-02.jpg"
     ],
@@ -185,8 +197,9 @@ window.clientProducts = [
       "brighten",
       "glow"
     ],
-    "image": "assets/client-products/axis-y-dark-spot-correcting-edit-01.jpg",
+    "image": "assets/client-products/axis-y-dark-spot-correcting-edit-card-clean.jpg",
     "gallery": [
+      "assets/client-products/axis-y-dark-spot-correcting-edit-card-clean.jpg",
       "assets/client-products/axis-y-dark-spot-correcting-edit-01.jpg",
       "assets/client-products/axis-y-dark-spot-correcting-edit-02.jpg",
       "assets/client-products/axis-y-dark-spot-correcting-edit-03.jpg",
@@ -224,8 +237,9 @@ window.clientProducts = [
       "brighten",
       "glow"
     ],
-    "image": "assets/client-products/ordinary-glycolic-acid-toning-solution-01.jpg",
+    "image": "assets/client-products/ordinary-glycolic-acid-toning-solution-clean.jpg",
     "gallery": [
+      "assets/client-products/ordinary-glycolic-acid-toning-solution-clean.jpg",
       "assets/client-products/ordinary-glycolic-acid-toning-solution-01.jpg"
     ],
     "desc": "Exfoliating toner for smoother-looking glow routines.",
@@ -242,8 +256,10 @@ window.clientProducts = [
       "brighten",
       "glow"
     ],
-    "image": "assets/client-products/garnier-vitamin-c-clarifying-wash-01.jpg",
+    "image": "assets/client-products/garnier-vitamin-c-clarifying-wash-card-clean.jpg",
     "gallery": [
+      "assets/client-products/garnier-vitamin-c-clarifying-wash-card-clean.jpg",
+      "assets/client-products/garnier-vitamin-c-clarifying-wash-clean.jpg",
       "assets/client-products/garnier-vitamin-c-clarifying-wash-01.jpg"
     ],
     "desc": "Brightening wash support for dull skin and daily cleansing.",
@@ -278,8 +294,9 @@ window.clientProducts = [
       "new",
       "repair"
     ],
-    "image": "assets/client-products/skin1004-centella-spf-edit-01.jpg",
+    "image": "assets/client-products/skin1004-centella-spf-clean.jpg",
     "gallery": [
+      "assets/client-products/skin1004-centella-spf-clean.jpg",
       "assets/client-products/skin1004-centella-spf-edit-01.jpg",
       "assets/client-products/skin1004-centella-spf-edit-02.jpg"
     ],
@@ -297,8 +314,9 @@ window.clientProducts = [
       "repair",
       "medicube"
     ],
-    "image": "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-01.jpg",
+    "image": "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-card-clean.jpg",
     "gallery": [
+      "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-card-clean.jpg",
       "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-01.jpg",
       "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-02.jpg",
       "assets/client-products/medicube-pdrn-pink-collagen-capsule-cream-03.jpg"
@@ -317,8 +335,9 @@ window.clientProducts = [
       "fragrance",
       "body"
     ],
-    "image": "assets/client-products/lattafa-yara-pink-perfume-01.jpg",
+    "image": "assets/client-products/lattafa-yara-pink-perfume-clean.jpg",
     "gallery": [
+      "assets/client-products/lattafa-yara-pink-perfume-clean.jpg",
       "assets/client-products/lattafa-yara-pink-perfume-01.jpg"
     ],
     "desc": "A soft pink fragrance moment for the feminine edit.",
@@ -335,8 +354,9 @@ window.clientProducts = [
       "repair",
       "medicube"
     ],
-    "image": "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-01.jpg",
+    "image": "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-card-clean.jpg",
     "gallery": [
+      "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-card-clean.jpg",
       "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-01.jpg",
       "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-02.jpg",
       "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-03.jpg",
@@ -356,8 +376,9 @@ window.clientProducts = [
       "glow",
       "medicube"
     ],
-    "image": "assets/client-products/medicube-pdrn-pink-peptide-serum-01.jpg",
+    "image": "assets/client-products/medicube-pdrn-pink-peptide-serum-card-clean.jpg",
     "gallery": [
+      "assets/client-products/medicube-pdrn-pink-peptide-serum-card-clean.jpg",
       "assets/client-products/medicube-pdrn-pink-peptide-serum-01.jpg",
       "assets/client-products/medicube-pdrn-pink-peptide-serum-02.jpg"
     ],
@@ -394,8 +415,10 @@ window.clientProducts = [
       "new",
       "body"
     ],
-    "image": "assets/client-products/bath-body-works-vanilla-romance-01.jpg",
+    "image": "assets/client-products/bath-body-works-vanilla-romance-card-clean.jpg",
     "gallery": [
+      "assets/client-products/bath-body-works-vanilla-romance-card-clean.jpg",
+      "assets/client-products/bath-body-works-vanilla-romance-clean.jpg",
       "assets/client-products/bath-body-works-vanilla-romance-01.jpg"
     ],
     "desc": "Warm vanilla bath and body collection from the client shelf.",
@@ -411,8 +434,10 @@ window.clientProducts = [
       "new",
       "body"
     ],
-    "image": "assets/client-products/bath-body-works-japanese-cherry-blossom-01.jpg",
+    "image": "assets/client-products/bath-body-works-japanese-cherry-blossom-card-clean.jpg",
     "gallery": [
+      "assets/client-products/bath-body-works-japanese-cherry-blossom-card-clean.jpg",
+      "assets/client-products/bath-body-works-japanese-cherry-blossom-clean.jpg",
       "assets/client-products/bath-body-works-japanese-cherry-blossom-01.jpg",
       "assets/client-products/bath-body-works-japanese-cherry-blossom-02.jpg"
     ],
@@ -429,8 +454,10 @@ window.clientProducts = [
       "new",
       "body"
     ],
-    "image": "assets/client-products/bath-body-works-gingham-gorgeous-01.jpg",
+    "image": "assets/client-products/bath-body-works-gingham-gorgeous-card-clean.jpg",
     "gallery": [
+      "assets/client-products/bath-body-works-gingham-gorgeous-card-clean.jpg",
+      "assets/client-products/bath-body-works-gingham-gorgeous-clean.jpg",
       "assets/client-products/bath-body-works-gingham-gorgeous-01.jpg"
     ],
     "desc": "Pink gingham bath and body set with a bright feminine feel.",
@@ -447,8 +474,12 @@ window.clientProducts = [
       "fragrance",
       "body"
     ],
-    "image": "assets/client-products/victorias-secret-mist-assortment-01.jpg",
+    "image": "assets/client-products/victorias-secret-mist-assortment-card-clean.jpg",
     "gallery": [
+      "assets/client-products/victorias-secret-mist-assortment-card-clean.jpg",
+      "assets/client-products/victorias-secret-mist-assortment-clean.jpg",
+      "assets/client-products/victorias-secret-gingham-blue-clean.jpg",
+      "assets/client-products/victorias-secret-mist-assortment-alt-clean.jpg",
       "assets/client-products/victorias-secret-mist-assortment-01.jpg",
       "assets/client-products/victorias-secret-mist-assortment-02.jpg",
       "assets/client-products/victorias-secret-mist-assortment-03.jpg"
@@ -467,8 +498,9 @@ window.clientProducts = [
       "pore",
       "medicube"
     ],
-    "image": "assets/client-products/medicube-zero-foam-cleanser-01.jpg",
+    "image": "assets/client-products/medicube-zero-foam-cleanser-card-clean.jpg",
     "gallery": [
+      "assets/client-products/medicube-zero-foam-cleanser-card-clean.jpg",
       "assets/client-products/medicube-zero-foam-cleanser-01.jpg",
       "assets/client-products/medicube-zero-foam-cleanser-02.jpg"
     ],
@@ -546,8 +578,9 @@ window.clientProducts = [
       "new",
       "repair"
     ],
-    "image": "assets/client-products/anua-airy-sun-cream-01.jpg",
+    "image": "assets/client-products/anua-airy-sun-cream-card-clean.jpg",
     "gallery": [
+      "assets/client-products/anua-airy-sun-cream-card-clean.jpg",
       "assets/client-products/anua-airy-sun-cream-01.jpg"
     ],
     "desc": "A light green Anua sunscreen presentation for daily protection.",
@@ -599,8 +632,9 @@ window.clientProducts = [
       "new",
       "pore"
     ],
-    "image": "assets/client-products/cerave-cleanser-edit-01.jpg",
+    "image": "assets/client-products/cerave-cleanser-card-clean.jpg",
     "gallery": [
+      "assets/client-products/cerave-cleanser-card-clean.jpg",
       "assets/client-products/cerave-cleanser-edit-01.jpg",
       "assets/client-products/cerave-cleanser-edit-02.jpg",
       "assets/client-products/cerave-cleanser-edit-03.jpg"
