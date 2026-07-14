@@ -322,26 +322,53 @@ function productImages(product) {
   return product.gallery?.length ? product.gallery : [product.image];
 }
 
+function escapeAttribute(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
 function productCard(product, compact = false) {
   const images = productImages(product);
   const hasGallery = images.length > 1;
+  const productUrl = `https://www.skinessentials.co.zw/#product-${product.id}`;
+  const productName = escapeAttribute(product.name);
+  const productBrand = escapeAttribute(product.brand);
+  const productDesc = escapeAttribute(product.desc);
+  const imageAlt = `${productBrand} ${productName} at Skin Essentials Harare`;
+  const pricedOffer =
+    typeof product.price === "number"
+      ? `
+        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="USD" />
+          <meta itemprop="price" content="${product.price}" />
+          <meta itemprop="availability" content="https://schema.org/InStock" />
+          <link itemprop="url" href="${productUrl}" />
+        </div>
+      `
+      : "";
   return `
-    <article class="product-card reveal">
+    <article class="product-card reveal" id="product-${product.id}" itemscope itemtype="https://schema.org/Product">
+      <link itemprop="url" href="${productUrl}" />
+      <meta itemprop="description" content="${productDesc}" />
       <div class="product-media">
-        <img src="${images[0]}" alt="${product.name}" loading="lazy" />
+        <img src="${images[0]}" alt="${imageAlt}" loading="lazy" itemprop="image" />
         <span class="badge">${product.badge}</span>
         ${hasGallery ? `<span class="gallery-pill">${images.length} images</span>` : ""}
       </div>
       <div class="product-body">
-        <span class="product-brand">${product.brand}</span>
-        <strong class="product-name">${product.name}</strong>
+        <span class="product-brand" itemprop="brand" itemscope itemtype="https://schema.org/Brand"><span itemprop="name">${productBrand}</span></span>
+        <strong class="product-name" itemprop="name">${productName}</strong>
         <span class="stars">5.0 rating <small>(${compact ? "9" : "12"})</small></span>
-        <p class="desc">${product.desc}</p>
+        <p class="desc">${productDesc}</p>
         <div class="product-meta">
           <span class="price">${money(product.price)}</span>
+          ${pricedOffer}
           <div class="card-actions">
-            <button class="small-action" type="button" data-view="${product.id}" aria-label="Quick view ${product.name}">i</button>
-            <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${product.name} to cart">+</button>
+            <button class="small-action" type="button" data-view="${product.id}" aria-label="Quick view ${productName}">i</button>
+            <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${productName} to cart">+</button>
           </div>
         </div>
       </div>
@@ -637,6 +664,12 @@ function observeReveals() {
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => setFilter(button.dataset.filter));
+});
+
+document.querySelectorAll("[data-seo-filter]").forEach((link) => {
+  link.addEventListener("click", () => {
+    setFilter(link.dataset.seoFilter);
+  });
 });
 
 searchInput.addEventListener("input", renderProducts);
