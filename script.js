@@ -263,6 +263,12 @@ const products = [
 
 products.unshift(...(window.clientProducts || []));
 
+const CATALOGUE_KEY = "skin-essentials-catalogue-v1";
+const ADMIN_PASSWORD_HASH = "69c72c7470249f124e40f02de652d7205ff2765cd7a8ca7dde6760f028c03273";
+const catalogueState = JSON.parse(localStorage.getItem(CATALOGUE_KEY) || '{"custom":[],"overrides":{},"deleted":[]}');
+products.splice(0, products.length, ...products.filter((item) => !catalogueState.deleted.includes(item.id)).map((item) => ({ ...item, ...(catalogueState.overrides[item.id] || {}) })));
+products.unshift(...catalogueState.custom);
+
 const offers = [
   "New client stock drop is live",
   "Harare pickup on Nelson Mandela Avenue",
@@ -355,7 +361,7 @@ function productCard(product, compact = false) {
       <meta itemprop="description" content="${productDesc}" />
       <div class="product-media">
         <img src="${images[0]}" alt="${imageAlt}" loading="lazy" itemprop="image" />
-        <span class="badge">${product.badge}</span>
+        <span class="badge">${product.tier || product.badge}</span>
         ${hasGallery ? `<span class="gallery-pill">${images.length} images</span>` : ""}
       </div>
       <div class="product-body">
@@ -421,7 +427,15 @@ function renderProducts() {
     return;
   }
 
-  grid.innerHTML = visibleProducts.map((product) => productCard(product)).join("");
+  if (activeFilter === "packages") {
+    const tierOrder = ["Essential", "Signature", "Luxury", "Other"];
+    grid.innerHTML = tierOrder.map((tier) => {
+      const tierProducts = visibleProducts.filter((product) => (product.tier || "Other") === tier);
+      return tierProducts.length ? `<div class="tier-divider"><span>${tier} tier</span><strong>${tierProducts.length} ${tierProducts.length === 1 ? "package" : "packages"}</strong></div>${tierProducts.map((product) => productCard(product)).join("")}` : "";
+    }).join("");
+  } else {
+    grid.innerHTML = visibleProducts.map((product) => productCard(product)).join("");
+  }
   attachProductEvents(grid);
   observeReveals();
   window.requestAnimationFrame(revealVisibleCards);
@@ -709,6 +723,107 @@ window.addEventListener("keydown", (event) => {
     closeQuickView();
   }
 });
+
+const adminGate = document.querySelector(".admin-gate");
+const adminStudio = document.querySelector(".admin-studio");
+const adminTrigger = document.querySelector("[data-admin-trigger]");
+const adminLoginForm = document.querySelector("#adminLoginForm");
+const productForm = document.querySelector("#productForm");
+const adminProductList = document.querySelector("#adminProductList");
+const adminImageInput = document.querySelector("#adminImage");
+let logoTapCount = 0;
+let logoTapTimer;
+let pendingImage = "";
+
+function persistCatalogue() { localStorage.setItem(CATALOGUE_KEY, JSON.stringify(catalogueState)); }
+function openAdminGate() { adminGate.classList.add("open"); adminGate.setAttribute("aria-hidden", "false"); document.body.classList.add("admin-open"); setTimeout(() => document.querySelector("#adminPassword").focus(), 120); }
+function closeAdminGate() { adminGate.classList.remove("open"); adminGate.setAttribute("aria-hidden", "true"); document.body.classList.remove("admin-open"); adminLoginForm.reset(); document.querySelector(".admin-error").textContent = ""; }
+function openAdminStudio() { closeAdminGate(); adminStudio.classList.add("open"); adminStudio.setAttribute("aria-hidden", "false"); document.body.classList.add("admin-open"); renderAdminList(); }
+function closeAdminStudio() { adminStudio.classList.remove("open"); adminStudio.setAttribute("aria-hidden", "true"); document.body.classList.remove("admin-open"); resetAdminForm(); }
+async function sha256(value) { const data = new TextEncoder().encode(value); const digest = await crypto.subtle.digest("SHA-256", data); return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join(""); }
+
+adminTrigger.addEventListener("click", (event) => {
+  logoTapCount += 1;
+  clearTimeout(logoTapTimer);
+  logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 900);
+  if (logoTapCount === 3) { event.preventDefault(); logoTapCount = 0; openAdminGate(); }
+});
+document.querySelector(".admin-close").addEventListener("click", closeAdminGate);
+document.querySelector(".admin-logout").addEventListener("click", closeAdminStudio);
+adminGate.addEventListener("click", (event) => { if (event.target === adminGate) closeAdminGate(); });
+adminLoginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const valid = await sha256(document.querySelector("#adminPassword").value) === ADMIN_PASSWORD_HASH;
+  if (!valid) { document.querySelector(".admin-error").textContent = "That password is not correct."; return; }
+  openAdminStudio();
+});
+
+adminImageInput.addEventListener("change", () => {
+  const file = adminImageInput.files[0];
+  if (!file) return;
+  if (file.size > 1572864) { showToast("Please choose an image under 1.5 MB"); adminImageInput.value = ""; return; }
+  const reader = new FileReader();
+  reader.onload = () => { pendingImage = reader.result; const preview = document.querySelector("#adminImagePreview"); preview.style.backgroundImage = `url("${pendingImage}")`; preview.hidden = false; document.querySelector("#uploadLabel").textContent = file.name; };
+  reader.readAsDataURL(file);
+});
+
+function resetAdminForm() { productForm.reset(); document.querySelector("#adminProductId").value = ""; document.querySelector("#formMode").textContent = "New entry"; document.querySelector("#adminImagePreview").hidden = true; document.querySelector("#uploadLabel").textContent = "Choose JPG, PNG, or WebP"; pendingImage = ""; }
+document.querySelector("#resetProductForm").addEventListener("click", resetAdminForm);
+
+function categoryValues(category) {
+  const map = { skincare: ["new", "glow"], fragrance: ["new", "fragrance"], body: ["new", "body"], packages: ["new", "packages"] };
+  return map[category] || ["new"];
+}
+
+productForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const existingId = document.querySelector("#adminProductId").value;
+  const original = products.find((item) => item.id === existingId);
+  if (!pendingImage && !original?.image) { showToast("Choose a product image first"); return; }
+  const category = document.querySelector("#adminCategory").value;
+  const priceText = document.querySelector("#adminPrice").value;
+  const tier = category === "packages" ? document.querySelector("#adminTier").value : "";
+  const item = {
+    id: existingId || `admin-${Date.now()}`,
+    name: document.querySelector("#adminName").value.trim(), brand: document.querySelector("#adminBrand").value.trim(),
+    price: priceText === "" ? null : Number(priceText), badge: tier || (category === "fragrance" ? "Perfume" : category === "body" ? "Body" : category === "packages" ? "Package" : "New"),
+    categories: categoryValues(category), category, tier, image: pendingImage || original.image,
+    desc: document.querySelector("#adminDescription").value.trim(), source: "Skin Essentials catalogue"
+  };
+  const productIndex = products.findIndex((entry) => entry.id === item.id);
+  if (productIndex >= 0) products.splice(productIndex, 1, item); else products.unshift(item);
+  const customIndex = catalogueState.custom.findIndex((entry) => entry.id === item.id);
+  if (customIndex >= 0) catalogueState.custom.splice(customIndex, 1, item);
+  else if (item.id.startsWith("admin-")) catalogueState.custom.unshift(item);
+  else catalogueState.overrides[item.id] = item;
+  persistCatalogue(); resetAdminForm(); renderProducts(); renderBest(); renderAdminList(); showToast(existingId ? "Catalogue entry updated" : "New entry published");
+});
+
+function editAdminItem(id) {
+  const item = products.find((entry) => entry.id === id); if (!item) return;
+  document.querySelector("#adminProductId").value = item.id; document.querySelector("#adminName").value = item.name; document.querySelector("#adminBrand").value = item.brand;
+  document.querySelector("#adminPrice").value = typeof item.price === "number" ? item.price : ""; document.querySelector("#adminCategory").value = item.category || (item.categories.includes("fragrance") ? "fragrance" : item.categories.includes("body") ? "body" : item.categories.includes("packages") ? "packages" : "skincare");
+  document.querySelector("#adminTier").value = item.tier || ""; document.querySelector("#adminDescription").value = item.desc; document.querySelector("#formMode").textContent = "Edit entry"; pendingImage = "";
+  const preview = document.querySelector("#adminImagePreview"); preview.style.backgroundImage = `url("${item.image}")`; preview.hidden = false; document.querySelector("#uploadLabel").textContent = "Choose a replacement image"; document.querySelector(".admin-form").scrollIntoView({ behavior: "smooth" });
+}
+
+function deleteAdminItem(id) {
+  const item = products.find((entry) => entry.id === id); if (!item || !confirm(`Remove ${item.name} from the catalogue?`)) return;
+  products.splice(products.findIndex((entry) => entry.id === id), 1);
+  catalogueState.custom = catalogueState.custom.filter((entry) => entry.id !== id); delete catalogueState.overrides[id];
+  if (!id.startsWith("admin-") && !catalogueState.deleted.includes(id)) catalogueState.deleted.push(id);
+  delete cart[id]; persistCatalogue(); resetAdminForm(); renderProducts(); renderBest(); renderAdminList(); updateCart(); showToast("Entry removed");
+}
+
+function renderAdminList() {
+  const query = document.querySelector("#adminLibrarySearch").value.trim().toLowerCase();
+  const visible = products.filter((item) => `${item.name} ${item.brand} ${item.tier || ""}`.toLowerCase().includes(query));
+  document.querySelector("#adminItemCount").textContent = `${products.length} ${products.length === 1 ? "entry" : "entries"}`;
+  adminProductList.innerHTML = visible.length ? visible.map((item) => `<article class="admin-product-row"><img src="${item.image}" alt=""><div class="admin-product-copy"><strong>${escapeAttribute(item.name)}</strong><span>${escapeAttribute(item.brand)} · ${money(item.price)}</span>${item.tier ? `<span class="tier-pill">${escapeAttribute(item.tier)}</span>` : ""}</div><div class="admin-row-actions"><button type="button" data-admin-edit="${item.id}">Edit</button><button class="delete" type="button" data-admin-delete="${item.id}">Delete</button></div></article>`).join("") : '<p class="admin-empty">No catalogue entries match that search.</p>';
+  adminProductList.querySelectorAll("[data-admin-edit]").forEach((button) => button.addEventListener("click", () => editAdminItem(button.dataset.adminEdit)));
+  adminProductList.querySelectorAll("[data-admin-delete]").forEach((button) => button.addEventListener("click", () => deleteAdminItem(button.dataset.adminDelete)));
+}
+document.querySelector("#adminLibrarySearch").addEventListener("input", renderAdminList);
 
 window.addEventListener("scroll", revealVisibleCards, { passive: true });
 window.addEventListener("load", () => {

@@ -125,7 +125,7 @@
     </div>
 
     <header class="site-header" id="top">
-      <a class="brand" href="#top" aria-label="Skin Essentials home">
+      <a class="brand" href="#top" aria-label="Skin Essentials home" data-admin-trigger>
         <img src="assets/logo.png" alt="Skin Essentials logo" />
         <span>Skin Essentials</span>
       </a>
@@ -241,6 +241,7 @@
             <button class="filter" type="button" data-filter="brighten">Brighten</button>
             <button class="filter" type="button" data-filter="body">Body</button>
             <button class="filter" type="button" data-filter="fragrance">Fragrance</button>
+            <button class="filter" type="button" data-filter="packages">Packages</button>
           </div>
         </div>
         <div class="product-grid" id="productGrid" aria-live="polite"></div>
@@ -294,6 +295,53 @@
       <div class="quick-panel">
         <button class="icon-button close-quick" type="button" aria-label="Close quick view">&times;</button>
         <div id="quickContent"></div>
+      </div>
+    </section>
+
+    <section class="admin-gate" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="adminGateTitle">
+      <div class="admin-gate-card">
+        <button class="icon-button admin-close" type="button" aria-label="Close admin login">&times;</button>
+        <span class="eyebrow">Private access</span>
+        <h2 id="adminGateTitle">Catalogue studio</h2>
+        <p>Enter the Skin Essentials administrator password.</p>
+        <form id="adminLoginForm">
+          <label>Password<input id="adminPassword" type="password" autocomplete="current-password" required /></label>
+          <p class="admin-error" role="alert"></p>
+          <button class="button primary" type="submit">Enter studio</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="admin-studio" aria-hidden="true" aria-label="Skin Essentials catalogue studio">
+      <div class="admin-shell">
+        <header class="admin-head">
+          <div><span class="eyebrow">Skin Essentials</span><h2>Catalogue studio</h2></div>
+          <button class="button admin-logout" type="button">Exit studio</button>
+        </header>
+        <div class="admin-layout">
+          <form id="productForm" class="admin-form">
+            <input id="adminProductId" type="hidden" />
+            <div class="admin-form-title"><span id="formMode">New entry</span><button id="resetProductForm" type="button">Clear</button></div>
+            <label>Product or package name<input id="adminName" required maxlength="80" /></label>
+            <div class="admin-pair">
+              <label>Brand<input id="adminBrand" required maxlength="50" /></label>
+              <label>Price (USD)<input id="adminPrice" type="number" min="0" step="0.01" placeholder="Leave blank for Ask" /></label>
+            </div>
+            <div class="admin-pair">
+              <label>Category<select id="adminCategory" required><option value="skincare">Skincare</option><option value="fragrance">Perfumes</option><option value="body">Body care</option><option value="packages">Packages</option></select></label>
+              <label>Package tier<select id="adminTier"><option value="">Not a package</option><option>Essential</option><option>Signature</option><option>Luxury</option></select></label>
+            </div>
+            <label>Short description<textarea id="adminDescription" rows="3" maxlength="220" required></textarea></label>
+            <label class="upload-field">Product image<input id="adminImage" type="file" accept="image/png,image/jpeg,image/webp" /><span id="uploadLabel">Choose JPG, PNG, or WebP</span></label>
+            <div id="adminImagePreview" class="admin-image-preview" hidden></div>
+            <button class="button primary" type="submit">Save to catalogue</button>
+            <p class="admin-note">Changes are saved on this device. Images should be under 1.5 MB.</p>
+          </form>
+          <div class="admin-library">
+            <div class="admin-library-head"><div><span>Live inventory</span><strong id="adminItemCount">0 entries</strong></div><input id="adminLibrarySearch" type="search" placeholder="Find an item…" /></div>
+            <div id="adminProductList" class="admin-product-list"></div>
+          </div>
+        </div>
       </div>
     </section>
 
