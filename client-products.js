@@ -12,7 +12,8 @@ window.clientProducts = [
     "image": "assets/client-products/beauty-formulas-feminine-wash-clean.jpg",
     "gallery": [
       "assets/client-products/beauty-formulas-feminine-wash-clean.jpg",
-      "assets/client-products/beauty-formulas-feminine-wash-01.jpg"
+      "assets/client-products/beauty-formulas-feminine-wash-01.jpg",
+      "assets/catalogue-july/beauty-formulas-feminine-wash.jpg"
     ],
     "desc": "Gentle intimate cleansing care for a polished body-care shelf.",
     "source": "Client stock drop"
@@ -31,7 +32,8 @@ window.clientProducts = [
     "gallery": [
       "assets/client-products/neutrogena-hydro-boost-gel-cream-card-clean.jpg",
       "assets/client-products/neutrogena-hydro-boost-gel-cream-clean.jpg",
-      "assets/client-products/neutrogena-hydro-boost-gel-cream-01.jpg"
+      "assets/client-products/neutrogena-hydro-boost-gel-cream-01.jpg",
+      "assets/catalogue-july/neutrogena-hydro-boost-gel-cream.jpg"
     ],
     "desc": "Blue-water hydration for extra dry skin and a cushioned finish.",
     "source": "Client stock drop"
@@ -48,7 +50,8 @@ window.clientProducts = [
     ],
     "image": "assets/client-products/simple-soothing-duo-01.jpg",
     "gallery": [
-      "assets/client-products/simple-soothing-duo-01.jpg"
+      "assets/client-products/simple-soothing-duo-01.jpg",
+      "assets/catalogue-july/simple-soothing-routine.jpg"
     ],
     "desc": "Light moisturiser and soothing toner for sensitive daily care.",
     "source": "Client stock drop"
@@ -126,7 +129,9 @@ window.clientProducts = [
     "gallery": [
       "assets/client-products/neutrogena-hydro-boost-spf-clean.jpg",
       "assets/client-products/neutrogena-hydro-boost-spf-edit-01.jpg",
-      "assets/client-products/neutrogena-hydro-boost-spf-edit-02.jpg"
+      "assets/client-products/neutrogena-hydro-boost-spf-edit-02.jpg",
+      "assets/catalogue-july/neutrogena-hydro-boost-spf50.jpg",
+      "assets/catalogue-july/neutrogena-hydro-boost-city-shield.jpg"
     ],
     "desc": "Hydrating sunscreen and city shield care in one Neutrogena edit.",
     "source": "Client stock drop"
@@ -203,7 +208,8 @@ window.clientProducts = [
       "assets/client-products/axis-y-dark-spot-correcting-edit-01.jpg",
       "assets/client-products/axis-y-dark-spot-correcting-edit-02.jpg",
       "assets/client-products/axis-y-dark-spot-correcting-edit-03.jpg",
-      "assets/client-products/axis-y-dark-spot-correcting-edit-04.jpg"
+      "assets/client-products/axis-y-dark-spot-correcting-edit-04.jpg",
+      "assets/catalogue-july/axis-y-dark-spot-serum.jpg"
     ],
     "desc": "Toner, serum and cream grouped into one hyperpigmentation edit.",
     "source": "Client stock drop"
@@ -260,7 +266,8 @@ window.clientProducts = [
     "gallery": [
       "assets/client-products/garnier-vitamin-c-clarifying-wash-card-clean.jpg",
       "assets/client-products/garnier-vitamin-c-clarifying-wash-clean.jpg",
-      "assets/client-products/garnier-vitamin-c-clarifying-wash-01.jpg"
+      "assets/client-products/garnier-vitamin-c-clarifying-wash-01.jpg",
+      "assets/catalogue-july/garnier-vitamin-c-wash.jpg"
     ],
     "desc": "Brightening wash support for dull skin and daily cleansing.",
     "source": "Client stock drop"
@@ -1097,5 +1104,39 @@ window.clientProducts = [
     ],
     "desc": "Large vitamin C cream tub for body and tone care.",
     "source": "Client stock drop"
-  }
+  },
+  { id: "july-pure-beauty-niacin-gluta", name: "Brighten Up Niacin-Gluta Luminous Serum", brand: "Pure Beauty", price: null, badge: "Brighten", categories: ["new", "brighten", "glow"], image: "assets/catalogue-july/pure-beauty-niacin-gluta-serum.jpg", desc: "Niacinamide and glutathione serum for a more radiant, even-looking finish.", source: "July catalogue" },
+  { id: "july-eos-body-lotion-assortment", name: "Shea Better Body Lotion Assortment", brand: "EOS", price: null, badge: "Body", categories: ["new", "body", "hydrate"], image: "assets/catalogue-july/eos-body-lotion-assortment.jpg", desc: "A soft-skin edit featuring Coconut Waters, Sensitive, Fresh + Cozy and Strawberry Dream lotions.", source: "July catalogue" },
+  { id: "july-anua-azelaic-soothing-edit", name: "Azelaic Soothing Edit", brand: "Anua", price: null, badge: "Calm", categories: ["new", "repair", "pore"], image: "assets/catalogue-july/anua-azelaic-soothing-edit.jpg", gallery: ["assets/catalogue-july/anua-azelaic-soothing-edit.jpg", "assets/catalogue-july/anua-azelaic-heartleaf-routine.jpg", "assets/catalogue-july/anua-azelaic-serum.jpg"], desc: "Azelaic acid, hyaluron and heartleaf care grouped for redness-prone and blemish-prone routines.", source: "July catalogue" },
+  { id: "july-medicube-txa-capsule-cream", name: "TXA Niacinamide Capsule Cream 5%", brand: "Medicube", price: null, badge: "Even tone", categories: ["new", "medicube", "brighten", "glow"], image: "assets/catalogue-july/medicube-txa-niacinamide-capsule-cream.jpg", desc: "A capsule-texture cream designed for luminous, even-looking skin.", source: "July catalogue" },
+  { id: "july-lush-good-times-roll", name: "Let the Good Times Roll Body Spray", brand: "Lush", price: null, badge: "Body mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/lush-good-times-roll.jpg", desc: "A warm, sweet body spray with a buttery popcorn-inspired character.", source: "July catalogue" },
+  { id: "july-lush-sticky-dates", name: "Sticky Dates Body Spray", brand: "Lush", price: null, badge: "Body mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/lush-sticky-dates.jpg", desc: "A rich gourmand body spray with sandalwood and benzoin warmth.", source: "July catalogue" },
+  { id: "july-cosrx-snail-routine", name: "Advanced Snail Complete Routine", brand: "COSRX", price: null, badge: "Routine", categories: ["new", "repair", "hydrate"], image: "assets/catalogue-july/cosrx-snail-routine-01.jpg", gallery: ["assets/catalogue-july/cosrx-snail-routine-01.jpg", "assets/catalogue-july/cosrx-snail-routine-02.jpg", "assets/catalogue-july/cosrx-snail-routine-03.jpg"], desc: "Cleanser, toner, essence and cream grouped as a complete snail mucin routine.", source: "July catalogue" },
+  { id: "july-anua-heartleaf-rice-routine", name: "Heartleaf + Rice Barrier Routine", brand: "Anua", price: null, badge: "Routine", categories: ["new", "hydrate", "repair"], image: "assets/catalogue-july/anua-heartleaf-rice-routine.jpg", gallery: ["assets/catalogue-july/anua-heartleaf-rice-routine.jpg", "assets/catalogue-july/anua-rice-ceramide-routine.jpg"], desc: "Heartleaf cleansing and rice ceramide hydration arranged as a balanced barrier routine.", source: "July catalogue" },
+  { id: "july-garnier-vitamin-c-routine", name: "Vitamin C Brightening Routine", brand: "Garnier", price: null, badge: "Vitamin C", categories: ["new", "brighten", "glow"], image: "assets/catalogue-july/garnier-vitamin-c-routine-01.jpg", gallery: ["assets/catalogue-july/garnier-vitamin-c-routine-01.jpg", "assets/catalogue-july/garnier-vitamin-c-routine-02.jpg"], desc: "Clarifying wash, booster serum and moisturising care grouped for daily radiance.", source: "July catalogue" },
+  { id: "july-medicube-zero-pore-serum", name: "Zero Pore One Day Serum", brand: "Medicube", price: null, badge: "Pore", categories: ["new", "medicube", "pore"], image: "assets/catalogue-july/medicube-zero-pore-serum.jpg", desc: "A pore-focused serum for smoother-looking texture and refined skin.", source: "July catalogue" },
+  { id: "july-medicube-pink-collagen-routine", name: "Pink Collagen Glow Routine", brand: "Medicube", price: null, badge: "Routine", categories: ["new", "medicube", "glow", "repair"], image: "assets/catalogue-july/medicube-pink-collagen-routine.jpg", desc: "A coordinated pink collagen routine for bounce, hydration and overnight glow.", source: "July catalogue" },
+  { id: "july-nivea-q10-lotion", name: "Q10 Firming Body Lotion Assortment", brand: "Nivea", price: null, badge: "Body", categories: ["new", "body"], image: "assets/catalogue-july/nivea-q10-body-lotion.jpg", desc: "Q10 and vitamin C body lotions for moisturised, firmer-looking skin.", source: "July catalogue" },
+  { id: "july-skin1004-probio-cica-cream", name: "Probio-Cica Enrich Cream", brand: "SKIN1004", price: null, badge: "Barrier", categories: ["new", "repair", "hydrate"], image: "assets/catalogue-july/skin1004-probio-cica-enrich-cream.jpg", desc: "A rich centella cream for dry, sensitive and compromised skin barriers.", source: "July catalogue" },
+  { id: "july-medicube-collagen-routine", name: "Triple Collagen + Zero Pore Edit", brand: "Medicube", price: null, badge: "Kit", categories: ["new", "medicube", "glow", "pore"], image: "assets/catalogue-july/medicube-collagen-routine.jpg", desc: "Triple collagen care paired with Zero Pore Pad 2.0 in one shelf-ready edit.", source: "July catalogue" },
+  { id: "july-dr-althea-aqua-marine", name: "Aqua Marine Deep Serum", brand: "Dr. Althea", price: null, badge: "Hydrate", categories: ["new", "hydrate", "repair"], image: "assets/catalogue-july/dr-althea-aqua-marine-serum.jpg", desc: "A bamboo-water serum for deep hydration and a fresh, comfortable finish.", source: "July catalogue" },
+  { id: "july-dr-althea-brightening-edit", name: "345 Relief + Vitamin C Edit", brand: "Dr. Althea", price: null, badge: "Routine", categories: ["new", "brighten", "repair"], image: "assets/catalogue-july/dr-althea-345-vitamin-c-edit-01.jpg", gallery: ["assets/catalogue-july/dr-althea-345-vitamin-c-edit-01.jpg", "assets/catalogue-july/dr-althea-345-vitamin-c-edit-02.jpg", "assets/catalogue-july/dr-althea-345-relief-cream.jpg"], desc: "Relief cream and vitamin C serum combined for blemish support and visible radiance.", source: "July catalogue" },
+  { id: "july-anua-peach-77-routine", name: "Peach 77 Niacin Routine", brand: "Anua", price: null, badge: "Glow", categories: ["new", "brighten", "glow"], image: "assets/catalogue-july/anua-peach-77-routine.jpg", desc: "A peach and niacinamide routine with serum, toner, lotion and cream.", source: "July catalogue" },
+  { id: "july-armaf-sillage", name: "Club de Nuit Sillage Eau de Parfum", brand: "Armaf", price: null, badge: "Perfume", categories: ["new", "fragrance"], image: "assets/catalogue-july/armaf-club-de-nuit-sillage.jpg", desc: "A polished eau de parfum presented in the signature mirrored Sillage bottle.", source: "July catalogue" },
+  { id: "july-medicube-age-r-device", name: "AGE-R Booster Device", brand: "Medicube", price: null, badge: "Device", categories: ["new", "medicube", "glow"], image: "assets/catalogue-july/medicube-age-r-device.jpg", desc: "A handheld skincare device designed to elevate product application and glow routines.", source: "July catalogue" },
+  { id: "july-celimax-retinal-shot", name: "Retinal Shot Tightening Booster", brand: "Celimax", price: null, badge: "Retinal", categories: ["new", "repair", "glow"], image: "assets/catalogue-july/celimax-retinal-shot-01.jpg", gallery: ["assets/catalogue-july/celimax-retinal-shot-01.jpg", "assets/catalogue-july/celimax-retinal-shot-02.jpg"], desc: "A targeted retinal and panthenol booster for firmer, smoother-looking skin.", source: "July catalogue" },
+  { id: "july-garnier-hyaluronic-wash", name: "Hyaluronic Aloe Gel-Wash", brand: "Garnier", price: null, badge: "Cleanse", categories: ["new", "pore", "hydrate"], image: "assets/catalogue-july/garnier-hyaluronic-aloe-gel-wash.jpg", desc: "A hydrating gel cleanser that refreshes skin and helps minimise the look of pores.", source: "July catalogue" },
+  { id: "july-garnier-intensive-lotion", name: "Intensive 7 Days Shea Body Lotion", brand: "Garnier", price: null, badge: "Body", categories: ["new", "body", "hydrate"], image: "assets/catalogue-july/garnier-intensive-7-days-lotion.jpg", desc: "Ultra-replenishing shea lotion for very dry skin and lasting comfort.", source: "July catalogue" },
+  { id: "july-garnier-bha-cleanser", name: "BHA Anti-Blackhead Purifying Cleanser", brand: "Garnier", price: null, badge: "BHA", categories: ["new", "pore"], image: "assets/catalogue-july/garnier-bha-purifying-cleanser.jpg", desc: "A charcoal and salicylic acid cleanser for blemish-prone skin and congested pores.", source: "July catalogue" },
+  { id: "july-garnier-salicylic-cleanser", name: "Salicylic Purifying Gentle Cleanser", brand: "Garnier", price: null, badge: "Cleanse", categories: ["new", "pore", "repair"], image: "assets/catalogue-july/garnier-salicylic-gentle-cleanser.jpg", desc: "Fragrance-free salicylic cleanser with niacinamide, ceramide and clay.", source: "July catalogue" },
+  { id: "july-garnier-charcoal-serum", name: "AHA + BHA Charcoal Serum", brand: "Garnier", price: null, badge: "Serum", categories: ["new", "pore", "glow"], image: "assets/catalogue-july/garnier-aha-bha-charcoal-serum.jpg", desc: "An anti-blemish serum with exfoliating acids, charcoal and niacinamide.", source: "July catalogue" },
+  { id: "july-garnier-charcoal-3in1", name: "BHA Charcoal 3-in-1", brand: "Garnier", price: null, badge: "3-in-1", categories: ["new", "pore"], image: "assets/catalogue-july/garnier-charcoal-3-in-1.jpg", desc: "A cleanser, scrub and mask in one charcoal formula for blackhead-prone skin.", source: "July catalogue" },
+  { id: "july-garnier-bright-complete-serum", name: "Bright Complete 30x Vitamin C Serum", brand: "Garnier", price: null, badge: "Vitamin C", categories: ["new", "brighten", "glow"], image: "assets/catalogue-july/garnier-bright-complete-serum.jpg", desc: "A concentrated daily booster serum for brightness and even-looking tone.", source: "July catalogue" },
+  { id: "july-bbw-into-the-night", name: "Into the Night Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-into-the-night.jpg", desc: "A deep, glamorous fine fragrance mist for evening wear.", source: "July catalogue" },
+  { id: "july-bbw-gingham", name: "Gingham Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-gingham.jpg", desc: "A bright blue fine fragrance mist with a fresh, polished character.", source: "July catalogue" },
+  { id: "july-bbw-japanese-cherry", name: "Japanese Cherry Blossom Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-japanese-cherry-blossom.jpg", desc: "A floral fine fragrance mist built around the iconic Japanese Cherry Blossom scent.", source: "July catalogue" },
+  { id: "july-bbw-warm-vanilla", name: "Warm Vanilla Sugar Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-warm-vanilla-sugar.jpg", desc: "A warm gourmand mist with a soft vanilla-sugar signature.", source: "July catalogue" },
+  { id: "july-bbw-vanilla-romance", name: "Vanilla Romance Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-vanilla-romance.jpg", desc: "A luminous vanilla fine fragrance mist with a modern romantic finish.", source: "July catalogue" },
+  { id: "july-bbw-youre-the-one", name: "You're the One Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-youre-the-one.jpg", desc: "A bold red fine fragrance mist designed for a confident signature scent.", source: "July catalogue" },
+  { id: "july-bbw-pink-obsessed", name: "Pink Obsessed Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-pink-obsessed.jpg", desc: "A vivid pink fine fragrance mist with a playful, statement-making mood.", source: "July catalogue" }
 ];
