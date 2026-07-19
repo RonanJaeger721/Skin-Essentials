@@ -295,6 +295,20 @@ a {
   display: block;
 }
 
+.hero-slide.product-photo-hero {
+  background:
+    linear-gradient(90deg, rgba(17, 12, 15, 0.72), rgba(17, 12, 15, 0.08)),
+    url("assets/hero-medicube-collagen-stock.jpeg") center / cover;
+}
+
+.hero-slide.product-photo-hero img {
+  width: min(58%, 760px);
+  margin-left: auto;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 28px 48px rgba(26, 10, 17, 0.24));
+}
+
 .hero-content {
   position: absolute;
   inset: 11% auto auto 7vw;
@@ -1137,6 +1151,12 @@ body.admin-open{overflow:hidden}
 
   .hero-slide img {
     min-height: 540px;
+  }
+
+  .hero-slide.product-photo-hero img {
+    width: 100%;
+    margin-left: 0;
+    object-fit: cover;
   }
 
   .hero-content {
