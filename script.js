@@ -263,6 +263,17 @@ const products = [
 
 products.unshift(...(window.clientProducts || []));
 
+// Give the shelf filters their literal product-type meaning while preserving
+// the concern-based categories already used throughout the catalogue.
+products.forEach((product) => {
+  const label = `${product.name} ${product.badge}`.toLowerCase();
+  if (/cleanser|cleansing|wash|cleansing oil/.test(label)) product.categories.push("cleansers");
+  if (/toner|toning/.test(label)) product.categories.push("toners");
+  if (/serum|essence|ampoule|exosome shot/.test(label)) product.categories.push("serums");
+  if (/cream|moisturi[sz]er|lotion/.test(label)) product.categories.push("creams");
+  product.categories = [...new Set(product.categories)];
+});
+
 const CATALOGUE_KEY = "skin-essentials-catalogue-v1";
 const ADMIN_PASSWORD_HASH = "69c72c7470249f124e40f02de652d7205ff2765cd7a8ca7dde6760f028c03273";
 const catalogueState = JSON.parse(localStorage.getItem(CATALOGUE_KEY) || '{"custom":[],"overrides":{},"deleted":[]}');
@@ -278,10 +289,10 @@ const offers = [
 const categories = [
   { label: "New drop", icon: "N", filter: "new" },
   { label: "Medicube", icon: "Me", filter: "medicube" },
-  { label: "Cleansers", icon: "C", filter: "pore" },
-  { label: "Toners", icon: "T", filter: "hydrate" },
-  { label: "Serums", icon: "S", filter: "brighten" },
-  { label: "Creams", icon: "Cr", filter: "repair" },
+  { label: "Cleansers", icon: "C", filter: "cleansers" },
+  { label: "Toners", icon: "T", filter: "toners" },
+  { label: "Serums", icon: "S", filter: "serums" },
+  { label: "Creams", icon: "Cr", filter: "creams" },
   { label: "Body care", icon: "B", filter: "body" },
   { label: "Fragrance", icon: "F", filter: "fragrance" },
 ];
