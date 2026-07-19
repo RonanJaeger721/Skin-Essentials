@@ -1140,3 +1140,62 @@ window.clientProducts = [
   { id: "july-bbw-youre-the-one", name: "You're the One Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-youre-the-one.jpg", desc: "A bold red fine fragrance mist designed for a confident signature scent.", source: "July catalogue" },
   { id: "july-bbw-pink-obsessed", name: "Pink Obsessed Fine Fragrance Mist", brand: "Bath & Body Works", price: null, badge: "Mist", categories: ["new", "fragrance", "body"], image: "assets/catalogue-july/bath-body-works-pink-obsessed.jpg", desc: "A vivid pink fine fragrance mist with a playful, statement-making mood.", source: "July catalogue" }
 ];
+
+// Prices and shelf tiers confirmed from the July 19 WhatsApp stock screenshots.
+// Keeping these corrections in one map makes future catalogue updates easy to audit.
+const confirmedStockUpdates = {
+  "client-beauty-formulas-feminine-wash": { price: 10, badge: "Body care", categories: ["new", "body", "cleansers"] },
+  "client-neutrogena-hydro-boost-gel-cream": { price: 15, badge: "Cream", categories: ["new", "hydrate", "creams"] },
+  "client-simple-soothing-duo": { price: 30, badge: "Combo", categories: ["new", "hydrate", "packages"] },
+  "client-cosrx-snail-radiance-duo": { price: 95, badge: "Combo", categories: ["new", "repair", "hydrate", "packages"] },
+  "client-panoxyl-acne-creamy-wash": { price: 25, badge: "Cleanser", categories: ["new", "pore", "cleansers"] },
+  "client-clean-clear-deep-cleansing-lotion": { name: "Deep Cleansing Toner", price: 15, badge: "Toner", categories: ["new", "hydrate", "toners"] },
+  "client-axis-y-dark-spot-correcting-edit": { price: 65, badge: "Dark spot edit", categories: ["new", "brighten", "glow", "packages"] },
+  "client-ordinary-glycolic-acid-toning-solution": { price: 25, badge: "Toner", categories: ["new", "brighten", "glow", "toners"] },
+  "client-garnier-vitamin-c-clarifying-wash": { price: 13, badge: "Cleanser", categories: ["new", "brighten", "cleansers"] },
+  "client-anua-azelaic-10-hyaluron-serum": { price: 30, badge: "Serum", categories: ["new", "brighten", "glow", "serums"] },
+  "client-anua-rice-ceramide-edit": { price: 88, badge: "Combo", categories: ["new", "hydrate", "repair", "packages"] },
+  "client-lattafa-yara-pink-perfume": { price: 50, badge: "Perfume", categories: ["new", "fragrance"] },
+  "client-lattafa-yara-orange-perfume": { price: 50, badge: "Perfume", categories: ["new", "fragrance"] },
+  "client-victorias-secret-mist-assortment": { price: 20, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "client-bath-body-works-vanilla-romance": { price: 18, badge: "Body care", categories: ["new", "fragrance", "body"] },
+  "client-bath-body-works-japanese-cherry-blossom": { price: 18, badge: "Body care", categories: ["new", "fragrance", "body"] },
+  "client-bath-body-works-gingham-gorgeous": { price: 18, badge: "Body care", categories: ["new", "fragrance", "body"] },
+  "client-medicube-one-day-exosome-shot": { price: 30, badge: "Serum", categories: ["new", "medicube", "pore", "serums"] },
+  "july-pure-beauty-niacin-gluta": { price: 30, badge: "Serum", categories: ["new", "brighten", "glow", "serums"] },
+  "july-eos-body-lotion-assortment": { price: 25, badge: "Body lotion", categories: ["new", "body", "hydrate", "creams"] },
+  "july-anua-azelaic-soothing-edit": { price: 85, badge: "Combo", categories: ["new", "repair", "pore", "packages"] },
+  "july-anua-heartleaf-rice-routine": { price: 88, badge: "Combo", categories: ["new", "hydrate", "repair", "packages"] },
+  "july-lush-good-times-roll": { price: 60, badge: "Body spray", categories: ["new", "fragrance", "body"] },
+  "july-lush-sticky-dates": { price: 60, badge: "Body spray", categories: ["new", "fragrance", "body"] },
+  "july-cosrx-snail-routine": { price: 150, badge: "Combo", categories: ["new", "repair", "hydrate", "packages"] },
+  "july-garnier-vitamin-c-routine": { price: 40, badge: "Combo", categories: ["new", "brighten", "glow", "packages"] },
+  "july-skin1004-probio-cica-cream": { price: 30, badge: "Cream", categories: ["new", "repair", "hydrate", "creams"] },
+  "july-nivea-q10-lotion": { price: 12, badge: "Body lotion", categories: ["new", "body"] },
+  "july-medicube-pink-collagen-routine": { price: 145, badge: "Combo", categories: ["new", "medicube", "glow", "repair", "packages"] },
+  "july-dr-althea-aqua-marine": { price: 30, badge: "Serum", categories: ["new", "hydrate", "repair", "serums"] },
+  "july-armaf-sillage": { price: 60, badge: "Perfume", categories: ["new", "fragrance"] },
+  "july-medicube-age-r-device": { price: 280, badge: "Device", categories: ["new", "medicube", "glow"] },
+  "july-garnier-hyaluronic-wash": { price: 13, badge: "Cleanser", categories: ["new", "pore", "hydrate", "cleansers"] },
+  "july-garnier-intensive-lotion": { price: 15, badge: "Body lotion", categories: ["new", "body", "hydrate"] },
+  "july-garnier-bha-cleanser": { price: 15, badge: "Cleanser", categories: ["new", "pore", "cleansers"] },
+  "july-garnier-salicylic-cleanser": { price: 15, badge: "Cleanser", categories: ["new", "pore", "repair", "cleansers"] },
+  "july-garnier-charcoal-serum": { price: 18, badge: "Serum", categories: ["new", "pore", "glow", "serums"] },
+  "july-garnier-charcoal-3in1": { price: 13, badge: "3-in-1", categories: ["new", "pore", "cleansers"] },
+  "july-garnier-bright-complete-serum": { price: 18, badge: "Serum", categories: ["new", "brighten", "glow", "serums"] },
+  "july-bbw-into-the-night": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-gingham": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-japanese-cherry": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-warm-vanilla": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-vanilla-romance": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-youre-the-one": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] },
+  "july-bbw-pink-obsessed": { price: 18, badge: "Body mist", categories: ["new", "fragrance", "body"] }
+};
+
+window.clientProducts = window.clientProducts.map((product) => {
+  const updated = { ...product, ...(confirmedStockUpdates[product.id] || {}) };
+  const isMedicubeSingle = updated.brand === "Medicube" && !/(routine|combo|kit)/i.test(updated.name);
+  return isMedicubeSingle && typeof updated.price !== "number"
+    ? { ...updated, price: 30 }
+    : updated;
+});
