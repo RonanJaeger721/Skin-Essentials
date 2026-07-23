@@ -347,7 +347,7 @@ function escapeAttribute(value) {
     .replaceAll(">", "&gt;");
 }
 
-function productCard(product, compact = false) {
+function productCard(product) {
   const images = productImages(product);
   const hasGallery = images.length > 1;
   const productUrl = `https://www.skinessentials.co.zw/#product-${product.id}`;
@@ -378,7 +378,6 @@ function productCard(product, compact = false) {
       <div class="product-body">
         <span class="product-brand" itemprop="brand" itemscope itemtype="https://schema.org/Brand"><span itemprop="name">${productBrand}</span></span>
         <strong class="product-name" itemprop="name">${productName}</strong>
-        <span class="stars">5.0 rating <small>(${compact ? "9" : "12"})</small></span>
         <p class="desc">${productDesc}</p>
         <div class="product-meta">
           <span class="price">${money(product.price)}</span>
@@ -417,7 +416,7 @@ function renderCategories() {
 
 function renderBest() {
   const bestProducts = bestIds.map((id) => products.find((item) => item.id === id)).filter(Boolean);
-  bestTrack.innerHTML = bestProducts.map((product) => productCard(product, true)).join("");
+  bestTrack.innerHTML = bestProducts.map((product) => productCard(product)).join("");
   attachProductEvents(bestTrack);
   observeReveals();
 }
