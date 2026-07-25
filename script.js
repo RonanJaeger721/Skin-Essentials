@@ -355,8 +355,26 @@ function productCard(product) {
   const productBrand = escapeAttribute(product.brand);
   const productDesc = escapeAttribute(product.desc);
   const imageAlt = `${productBrand} ${productName} at Skin Essentials Harare`;
+  const isPriced = typeof product.price === "number";
+  const productSchema = isPriced
+    ? {
+        article: ' itemscope itemtype="https://schema.org/Product"',
+        url: ' itemprop="url"',
+        description: ' itemprop="description"',
+        image: ' itemprop="image"',
+        brand: ' itemprop="brand" itemscope itemtype="https://schema.org/Brand"',
+        name: ' itemprop="name"',
+      }
+    : {
+        article: "",
+        url: "",
+        description: "",
+        image: "",
+        brand: "",
+        name: "",
+      };
   const pricedOffer =
-    typeof product.price === "number"
+    isPriced
       ? `
         <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
           <meta itemprop="priceCurrency" content="USD" />
@@ -367,17 +385,17 @@ function productCard(product) {
       `
       : "";
   return `
-    <article class="product-card reveal" id="product-${product.id}" itemscope itemtype="https://schema.org/Product">
-      <link itemprop="url" href="${productUrl}" />
-      <meta itemprop="description" content="${productDesc}" />
+    <article class="product-card reveal" id="product-${product.id}"${productSchema.article}>
+      <link${productSchema.url} href="${productUrl}" />
+      <meta${productSchema.description} content="${productDesc}" />
       <div class="product-media">
-        <img src="${images[0]}" alt="${imageAlt}" loading="lazy" itemprop="image" />
+        <img src="${images[0]}" alt="${imageAlt}" loading="lazy"${productSchema.image} />
         <span class="badge">${product.tier || product.badge}</span>
         ${hasGallery ? `<span class="gallery-pill">${images.length} images</span>` : ""}
       </div>
       <div class="product-body">
-        <span class="product-brand" itemprop="brand" itemscope itemtype="https://schema.org/Brand"><span itemprop="name">${productBrand}</span></span>
-        <strong class="product-name" itemprop="name">${productName}</strong>
+        <span class="product-brand"${productSchema.brand}><span${productSchema.name}>${productBrand}</span></span>
+        <strong class="product-name"${productSchema.name}>${productName}</strong>
         <p class="desc">${productDesc}</p>
         <div class="product-meta">
           <span class="price">${money(product.price)}</span>
