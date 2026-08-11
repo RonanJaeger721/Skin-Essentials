@@ -116,7 +116,7 @@ const products = [
     price: 30,
     badge: "Calm",
     categories: ["repair", "hydrate"],
-    image: "assets/pdrn-cica-toner.jpg",
+    image: "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-card-clean.jpg",
     desc: "A calming toner step for a reset routine.",
   },
   {
