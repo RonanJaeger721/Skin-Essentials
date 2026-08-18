@@ -40,16 +40,6 @@ const products = [
     desc: "Comforting cream for dry, stressed, or over-treated skin.",
   },
   {
-    id: "anua-pore-cleansing-foam",
-    name: "Anua Pore Deep Cleansing Foam",
-    brand: "Anua",
-    price: 30,
-    badge: "Pore",
-    categories: ["pore"],
-    image: "assets/anua-pore-cleansing-foam.jpg",
-    desc: "A soft foam cleanse for congested skin and a refined finish.",
-  },
-  {
     id: "heartleaf-77-toner",
     name: "Heartleaf 77 Soothing Toner",
     brand: "Anua",
@@ -110,23 +100,13 @@ const products = [
     desc: "Budget-friendly brightening cream for daily glow.",
   },
   {
-    id: "pdrn-cica-toner",
-    name: "PDRN Cica Soothing Toner",
-    brand: "Medicube",
-    price: 30,
-    badge: "Calm",
-    categories: ["repair", "hydrate"],
-    image: "assets/client-products/medicube-pdrn-pink-cica-soothing-toner-card-clean.jpg",
-    desc: "A calming toner step for a reset routine.",
-  },
-  {
     id: "axis-y-dark-spot-serum",
     name: "Axis-Y Dark Spot Glow Serum",
     brand: "Axis-Y",
     price: 25,
     badge: "Dark spots",
     categories: ["brighten", "glow"],
-    image: "assets/axis-y-dark-spot-serum.jpg",
+    image: "assets/catalogue-july/axis-y-dark-spot-serum.jpg",
     desc: "A glow serum for uneven tone and post-blemish marks.",
   },
   {
@@ -267,6 +247,8 @@ products.unshift(...(window.clientProducts || []));
 // the concern-based categories already used throughout the catalogue.
 products.forEach((product) => {
   const label = `${product.name} ${product.badge}`.toLowerCase();
+  if (product.brand === "Anua") product.categories.push("anua");
+  if (product.brand === "SKIN1004") product.categories.push("centella");
   if (/cleanser|cleansing|wash|cleansing oil/.test(label)) product.categories.push("cleansers");
   if (/toner|toning/.test(label)) product.categories.push("toners");
   if (/serum|essence|ampoule|exosome shot/.test(label)) product.categories.push("serums");
@@ -289,6 +271,8 @@ const offers = [
 const categories = [
   { label: "New drop", icon: "N", filter: "new" },
   { label: "Medicube", icon: "Me", filter: "medicube" },
+  { label: "Anua", icon: "A", filter: "anua" },
+  { label: "SKIN1004 / Centella", icon: "C", filter: "centella" },
   { label: "Cleansers", icon: "C", filter: "cleansers" },
   { label: "Toners", icon: "T", filter: "toners" },
   { label: "Serums", icon: "S", filter: "serums" },
