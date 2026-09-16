@@ -867,6 +867,41 @@ h3 {
   transition: background 0.3s ease;
 }
 
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: 1.5rem clamp(1.25rem, 4vw, 4rem) max(1.5rem, env(safe-area-inset-bottom));
+  border-top: 1px solid currentColor;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.jaeger-credit {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  opacity: 0.72;
+  transition: opacity 180ms ease;
+}
+
+.jaeger-credit:hover,
+.jaeger-credit:focus-visible { opacity: 1; }
+
+.jaeger-credit:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: max(5rem, calc(env(safe-area-inset-bottom) + 4rem));
+  }
+}
+
 .cart-drawer.open,
 .quick-view.open {
   background: rgba(21, 16, 20, 0.38);
